@@ -1,4 +1,7 @@
-<!DOCTYPE html>ççççç
+img/cenario-passo0.png
+img/cenario-passo11-cidade-perdida.png
+img/cenario-passo4-voltar-casa.png
+!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <title>Em busca da cidade perdida</title>
 </head>
 <body>
@@ -72,7 +75,7 @@
                 aqui.</p>
             <button class="btn-proximo" data-proximo="12">Retornar e tentar o outro rio</button>
         </div>
- 
+
         <div class="passo" id="passo-11">
             <img src="img/cenario-passo11-cidade-perdida.png" alt="encontrando uma cidade maravilhosa perdida no Amazonas">
             <p>Dentro da cidade perdida, você descobre tesouros inimagináveis e decide se dedicar a estudar e preservar
@@ -88,3 +91,55 @@
     <script src="script.js"></script>
 </body>
 </html>
+ 11 changes: 11 additions & 0 deletions11  
+script.js
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,11 @@
+const avanca = document.querySelectorAll('.btn-proximo');
+
+avanca.forEach(button => {
+    button.addEventListener('click', function(){
+        const atual = document.querySelector('.ativo');
+        const proximoPasso = 'passo-' + this.getAttribute('data-proximo');
+
+        atual.classList.remove('ativo');
+        document.getElementById(proximoPasso).classList.add('ativo');
+    })
+})
+ 33 changes: 33 additions & 0 deletions33  
+style.css
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,33 @@
+body {
+    background-color: #1D4221;
+    color: white;
+    font-family: "Bai Jamjuree", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    margin: 0;
+}
+
+button {
+    background-color: #64A712;
+    color: white;
+    font-family: "Bai Jamjuree", sans-serif;
+}
+
+.passo {
+    display: none;
+}
+
+.passo.ativo {
+    display:block;
+}
+
+main {
+    text-align: center;
+    max-width: 90%;
+}
+
+img {
+    max-width: 90%;
+}
